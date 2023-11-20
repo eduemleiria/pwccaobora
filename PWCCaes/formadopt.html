@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link src="css/style.css" rel="stylesheet">
+    <title>O Amiguinho</title>
+
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="bg-body-secondary">
+    <nav class="py-4">
+        <a class="nav-link text-center" href="index.html">
+            <h1>O Amiguinho</h1>
+        </a>
+    </nav>
+    <nav class="navbar navbar-expand-lg bg-success">
+        <div class="mx-auto">
+            <div class="collapse navbar-collapse" id="navbar">
+                <div class="navbar-nav py-2">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="adopt.html"><b>Adotar</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="loja.html"><b>Loja</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="favoritos.html"><b>Favoritos</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="sobreus.html"><b>Sobre Nós</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="contacto.html"><b>Contactos</b></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container justify-content-center col-6">
+        <h2 class="my-4">Formulário de Adoção</h2>
+        <p>Obrigado por considerar adotar um animal. Só pedimos que preencha o formulário de adoção<br>e pode aguardar pela resposta!</p>
+    </div>
+    <div class="container justify-content-center col-6">
+        <form>
+            <div class="mb-3">
+                <label for="inputNome" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" id="inputNome">
+            </div>
+            <div class="mb-3">
+                <label for="inputTele" class="form-label">Contacto telefónico</label>
+                <input type="tel" class="form-control" id="inputTele">
+            </div>
+            <div class="mb-3">
+                <label for="inputHoraP" class="form-label">Hora preferencial para poder contactar</label>
+                <input type="text" class="form-control" id="inputHoraP">
+            </div>
+            <div class="mb-3">
+                <label for="inputAge" class="form-label">Idade</label>
+                <input type="date" class="form-control" id="inputAge">
+            </div>
+            <div class="mb-3">
+                <label for="inputMorada" class="form-label">Morada</label>
+                <input type="text" class="form-control" id="inputMorada">
+            </div>
+            <div class="mb-3">
+                <label for="inputCidade" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="inputCidade">   
+            </div>
+            <div class="mb-3">
+                <label for="inputJob" class="form-label">Profissão</label>
+                <input type="text" class="form-control" id="inputJob">
+            </div>
+            <div class="mb-3">
+                <label for="inputPetN" class="form-label">Nome do animal que deseja adotar</label>
+                <input type="text" class="form-control" id="inputPetN">   
+            </div>
+            <div class="mb-3">
+                <p>Caso não procure adoptar um animal específico, indique se tem preferência pelo sexo do animal</p>
+                <input type="radio" id="macho" name="fav_language" value="macho">
+                <label for="macho">Macho</label><br>
+                <input type="radio" id="femea" name="fav_language" value="femea">
+                <label for="femea">Fêmea</label><br>
+                <input type="radio" id="indif" name="fav_language" value="indif">
+                <label for="indif">Indiferente</label>  
+            </div>
+            <div class="mb-3">
+                <p>Qual o motivo de adoção?</p>
+                <input type="checkbox" id="CompA" name="CompanhiaAnimal" value="CompA">
+                <label for="CompA">Companhia para outro animal</label><br>
+                <input type="checkbox" id="Comp" name="Companhia" value="Comp">
+                <label for="Comp">Companhia</label><br>
+                <input type="checkbox" id="criacao" name="Criacao" value="Criacao">
+                <label for="criacao">Criação</label>
+            </div>
+            <div class="mb-3">
+                <p>Caso não procure adoptar um animal específico, indique se tem preferência pelo sexo do animal</p>
+                <input type="radio" id="apartamento" name="fav_language" value="apartamento">
+                <label for="apartamento">Apartamento</label><br>
+                <input type="radio" id="vivenda" name="fav_language" value="vivenda">
+                <label for="vivenda">Casa com quintal/acesso ao exterior</label><br>
+            </div>
+            <div class="mb-3">
+                <p>A habitação é:</p>
+                <input type="checkbox" id="Prop" name="Propia" value="Prop">
+                <label for="Prop">Própria</label><br>
+                <input type="checkbox" id="Arrendada" name="Arrendada" value="Arrendada">
+                <label for="Arrendada">Arrendada</label><br>
+            </div>
+            <div class="mb-3">
+                <label for="inputQuantos" class="form-label">Quantos adultos vivem na casa?</label>
+                <input type="number" class="form-control" id="inputQuantos">
+            </div>
+            <div class="mb-3">
+                <p>Vivem crianças na casa? Se sim, indique o intervalo de idades?</p>
+                <input type="checkbox" id="noCriancas" name="NadaCriancas" value="noCriancas">
+                <label for="noCriancas">Não existem crianças</label><br>
+                <input type="checkbox" id="cincoAnos" name="MenosdeCincoAnos" value="cincoAnos">
+                <label for="cincoAnos">< 5 anos</label><br>
+                <input type="checkbox" id="entreCaD" name="EntreCincoaDez" value="entreCaD">
+                <label for="entreCaD">5 a 10 anos</label><br>
+                <input type="checkbox" id="DezAnos" name="MaisDeDez" value="DezAnos">
+                <label for="DezAnos">> 10 anos</label><br>
+            </div>
+            <div class="mb-3">
+                <p>A casa é visitada frequentemente por crianças?</p>
+                <input type="radio" id="simCC" name="fav_language" value="simCC">
+                <label for="simCC">Sim</label><br>
+                <input type="radio" id="naoCC" name="fav_language" value="naoCC">
+                <label for="naoCC">Não</label><br>
+            </div>
+            <div class="mb-3">
+                <label for="inputHoraS" class="form-label">Quantas horas por dia, em média, passará o animal, sozinho em casa?</label>
+                <input type="text" class="form-control" id="inputHoraS">
+            </div>
+            <div class="mb-3">
+                <label for="inputTipoAnimal" class="form-label">Tem outros animais em casa e/ou a seu cargo? Se sim, especifique por favor o tipo e a idade.</label>
+                <input type="text" class="form-control" id="inputTipoAnimal">
+            </div>
+            <div class="mb-3">
+                <p>Que tipo de personalidade espera encontrar no animal? Preencha por favor as próximas questões:</p>
+            </div>
+            <div class="mb-3">
+                <p>Goste de crianças:</p>
+                <input type="radio" id="muitoImpC" name="fav_language" value="muitoImpC">
+                <label for="muitoImpC">Muito Importante</label><br>
+                <input type="radio" id="impC" name="fav_language" value="impC">
+                <label for="impC">Importante</label><br>
+                <input type="radio" id="poucoImpC" name="fav_language" value="poucoImpC">
+                <label for="poucoImpC">Pouco Importante</label><br>
+            </div>
+            <div class="mb-3">
+                <p>Sociável com outros animais:</p>
+                <input type="radio" id="muitoImpCA" name="fav_language" value="muitoImpCA">
+                <label for="muitoImpCA">Muito Importante</label><br>
+                <input type="radio" id="impCA" name="fav_language" value="impCA">
+                <label for="impCA">Importante</label><br>
+                <input type="radio" id="poucoImpCA" name="fav_language" value="poucoImpCA">
+                <label for="poucoImpCA">Pouco Importante</label><br>
+            </div>
+            <div class="mb-3">
+                <p>Não se importe com estranhos:</p>
+                <input type="radio" id="muitoImpCS" name="fav_language" value="muitoImpCS">
+                <label for="muitoImpCS">Muito Importante</label><br>
+                <input type="radio" id="impCS" name="fav_language" value="impCS">
+                <label for="impCS">Importante</label><br>
+                <input type="radio" id="poucoImpCS" name="fav_language" value="poucoImpCS">
+                <label for="poucoImpCS">Pouco Importante</label><br>
+            </div>
+            <div class="mb-3">
+                <p>Esteja esterilizado/castrado:</p>
+                <input type="radio" id="muitoImpEC" name="fav_language" value="muitoImpEC">
+                <label for="muitoImpEC">Muito Importante</label><br>
+                <input type="radio" id="impEC" name="fav_language" value="impEC">
+                <label for="impEC">Importante</label><br>
+                <input type="radio" id="poucoImpEC" name="fav_language" value="poucoImpEC">
+                <label for="poucoImpEC">Pouco Importante</label><br>
+            </div>
+            <div class="mb-3">
+                <p>Goste de ser pegado ao colo:</p>
+                <input type="radio" id="muitoImpPC" name="fav_language" value="muitoImpPC">
+                <label for="muitoImpPC">Muito Importante</label><br>
+                <input type="radio" id="impPC" name="fav_language" value="impPC">
+                <label for="impPC">Importante</label><br>
+                <input type="radio" id="poucoImpPC" name="fav_language" value="poucoImpPC">
+                <label for="poucoImpPC">Pouco Importante</label><br>
+            </div>
+            <div class="mb-3">
+                <p>Que seja calmo:</p>
+                <input type="radio" id="muitoImpCalmo" name="fav_language" value="muitoImpCalmo">
+                <label for="muitoImpCalmo">Muito Importante</label><br>
+                <input type="radio" id="impCalmo" name="fav_language" value="impCalmo">
+                <label for="impCalmo">Importante</label><br>
+                <input type="radio" id="poucoImpCalmo" name="fav_language" value="poucoImpCalmo">
+                <label for="poucoImpCalmo">Pouco Importante</label><br>
+            </div>     
+            <div class="mb-3">
+                <p>Que se comporte bem quando fica sozinho:</p>
+                <input type="radio" id="muitoImpSozinho" name="fav_language" value="muitoImpSozinho">
+                <label for="muitoImpSozinho">Muito Importante</label><br>
+                <input type="radio" id="impSozinho" name="fav_language" value="impSozinho">
+                <label for="impSozinho">Importante</label><br>
+                <input type="radio" id="poucoImpSozinho" name="fav_language" value="poucoImpSozinho">
+                <label for="poucoImpSozinho">Pouco Importante</label><br>
+            </div>  
+            <div class="mb-3">
+                <p>Atividade do animal:</p>
+                <input type="checkbox" id="calmoAni" name="calmoAnimal" value="calmoAni">
+                <label for="calmoAni">Calmo</label><br>
+                <input type="checkbox" id="modAC" name="ModActivo" value="modAC">
+                <label for="modAC">Moderadamente activo</label><br>
+                <input type="checkbox" id="activoAni" name="animalAtivo" value="activoAni">
+                <label for="activoAni">Activo</label><br>
+                <input type="checkbox" id="indefA" name="IndiferenteAnimal" value="indefA">
+                <label for="indefA">Indiferente</label><br>
+            </div> 
+            <div class="mb-3">
+                <p>Será o seu primeiro animal?</p>
+                <input type="radio" id="simPA" name="fav_language" value="simPA">
+                <label for="simPA">Sim</label><br>
+                <input type="radio" id="naoPA" name="fav_language" value="naoPA">
+                <label for="naoPA">Não</label><br>
+            </div> 
+            <div class="mb-3">
+                <label for="inputExp" class="form-label">Se não, conte-nos a sua experiencia por favor.</label>
+                <input type="text" class="form-control" id="inputExp">   
+            </div>
+            <div class="form-group">
+                <label for="inputMsg">Informação que queira partilhar connosco</label>
+                <textarea class="form-control" id="inputMsg" rows="4"></textarea>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Li e concordo com a Política de Privacidade.</label>
+            </div>
+            <button type="submit" class="my-2 btn btn-primary">Enviar</button>
+        </form>
+    </div>
+    <footer class="bg-success py-3 mt-5">
+        <div class="container text-light text-center">
+            <p class="display-5 mb-3">Faça a diferença na vida de um animal hoje!</p>
+            <small class="text-white-50">&copy; Copyright by IPLeiria</small>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>
