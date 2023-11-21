@@ -45,7 +45,8 @@
     </nav>
     <div class="container justify-content-center col-6">
         <h2 class="my-4">Formulário de Adoção</h2>
-        <p>Obrigado por considerar adotar um animal. Só pedimos que preencha o formulário de adoção<br>e pode aguardar pela resposta!</p>
+        <p>Obrigado por considerar adotar um animal. Só pedimos que preencha o formulário de adoção<br>e pode aguardar
+            pela resposta!</p>
     </div>
     <div class="container justify-content-center col-6">
         <form>
@@ -71,7 +72,7 @@
             </div>
             <div class="mb-3">
                 <label for="inputCidade" class="form-label">Cidade</label>
-                <input type="text" class="form-control" id="inputCidade">   
+                <input type="text" class="form-control" id="inputCidade">
             </div>
             <div class="mb-3">
                 <label for="inputJob" class="form-label">Profissão</label>
@@ -79,7 +80,7 @@
             </div>
             <div class="mb-3">
                 <label for="inputPetN" class="form-label">Nome do animal que deseja adotar</label>
-                <input type="text" class="form-control" id="inputPetN">   
+                <input type="text" class="form-control" id="inputPetN">
             </div>
             <div class="mb-3">
                 <p>Caso não procure adoptar um animal específico, indique se tem preferência pelo sexo do animal</p>
@@ -88,7 +89,7 @@
                 <input type="radio" id="femea" name="fav_language" value="femea">
                 <label for="femea">Fêmea</label><br>
                 <input type="radio" id="indif" name="fav_language" value="indif">
-                <label for="indif">Indiferente</label>  
+                <label for="indif">Indiferente</label>
             </div>
             <div class="mb-3">
                 <p>Qual o motivo de adoção?</p>
@@ -122,7 +123,7 @@
                 <input type="checkbox" id="noCriancas" name="NadaCriancas" value="noCriancas">
                 <label for="noCriancas">Não existem crianças</label><br>
                 <input type="checkbox" id="cincoAnos" name="MenosdeCincoAnos" value="cincoAnos">
-                <label for="cincoAnos">< 5 anos</label><br>
+                <label for="cincoAnos">5 anos</label><br>
                 <input type="checkbox" id="entreCaD" name="EntreCincoaDez" value="entreCaD">
                 <label for="entreCaD">5 a 10 anos</label><br>
                 <input type="checkbox" id="DezAnos" name="MaisDeDez" value="DezAnos">
@@ -136,11 +137,13 @@
                 <label for="naoCC">Não</label><br>
             </div>
             <div class="mb-3">
-                <label for="inputHoraS" class="form-label">Quantas horas por dia, em média, passará o animal, sozinho em casa?</label>
+                <label for="inputHoraS" class="form-label">Quantas horas por dia, em média, passará o animal, sozinho em
+                    casa?</label>
                 <input type="text" class="form-control" id="inputHoraS">
             </div>
             <div class="mb-3">
-                <label for="inputTipoAnimal" class="form-label">Tem outros animais em casa e/ou a seu cargo? Se sim, especifique por favor o tipo e a idade.</label>
+                <label for="inputTipoAnimal" class="form-label">Tem outros animais em casa e/ou a seu cargo? Se sim,
+                    especifique por favor o tipo e a idade.</label>
                 <input type="text" class="form-control" id="inputTipoAnimal">
             </div>
             <div class="mb-3">
@@ -199,7 +202,7 @@
                 <label for="impCalmo">Importante</label><br>
                 <input type="radio" id="poucoImpCalmo" name="fav_language" value="poucoImpCalmo">
                 <label for="poucoImpCalmo">Pouco Importante</label><br>
-            </div>     
+            </div>
             <div class="mb-3">
                 <p>Que se comporte bem quando fica sozinho:</p>
                 <input type="radio" id="muitoImpSozinho" name="fav_language" value="muitoImpSozinho">
@@ -208,7 +211,7 @@
                 <label for="impSozinho">Importante</label><br>
                 <input type="radio" id="poucoImpSozinho" name="fav_language" value="poucoImpSozinho">
                 <label for="poucoImpSozinho">Pouco Importante</label><br>
-            </div>  
+            </div>
             <div class="mb-3">
                 <p>Atividade do animal:</p>
                 <input type="checkbox" id="calmoAni" name="calmoAnimal" value="calmoAni">
@@ -219,25 +222,117 @@
                 <label for="activoAni">Activo</label><br>
                 <input type="checkbox" id="indefA" name="IndiferenteAnimal" value="indefA">
                 <label for="indefA">Indiferente</label><br>
-            </div> 
+            </div>
             <div class="mb-3">
                 <p>Será o seu primeiro animal?</p>
                 <input type="radio" id="simPA" name="fav_language" value="simPA">
                 <label for="simPA">Sim</label><br>
                 <input type="radio" id="naoPA" name="fav_language" value="naoPA">
                 <label for="naoPA">Não</label><br>
-            </div> 
+            </div>
             <div class="mb-3">
                 <label for="inputExp" class="form-label">Se não, conte-nos a sua experiencia por favor.</label>
-                <input type="text" class="form-control" id="inputExp">   
+                <input type="text" class="form-control" id="inputExp">
+            </div>
+            <div class="mb-3">
+                <p>Na sua ausência (férias p.ex.) como pretende deixar o animal?</p>
+                <input type="checkbox" id="cuidadosFamiliar" name="tratar-animal-ausencia"
+                    value="Ficará aos cuidados de um familiar/conhecido;">
+                <label for="cuidadosFamiliar" class="form-check-label">Ficará aos cuidados de um
+                    familiar/conhecido;</label><br>
+                <input type="checkbox" id="hotel" name="tratar-animal-ausencia" value="Ficará em hotel;">
+                <label for="hotel" class="form-check-label">Ficará em hotel;</label><br>
+                <input type="checkbox" id="ferias" name="tratar-animal-ausencia" value="Irá comigo de férias.">
+                <label for="ferias" class="form-check-label">Irá comigo de férias.</label><br>
+            </div>
+            <div class="mb-3">
+                <p>O animal ficará preso em alguma situação?</p>
+                <input type="radio" id="presoSim" name="animal-preso1" value="Sim">
+                <label for="presoSim" class="form-check-label">Sim</label><br>
+                <input type="radio" id="presoNao" name="animal-preso1" value="Não">
+                <label for="presoNao" class="form-check-label">Não</label><br>
+            </div>
+            <div class="mb-3">
+                <label for="inputVeterinario" class="form-label">Tem algum veterinário preferido? Se sim, deixe o seu
+                    nome e contacto.</label>
+                <input type="text" class="form-control" id="inputVeterinario">
+            </div>
+            <div class="mb-3">
+                <p>No caso de acidente, irá recorrer a um veterinário?</p>
+                <input type="radio" id="acidenteSim" name="acidente1" value="Sim">
+                <label for="acidenteSim" class="form-check-label">Sim</label><br>
+                <input type="radio" id="acidenteNao" name="acidente1" value="Não">
+                <label for="acidenteNao" class="form-check-label">Não</label><br>
+            </div>
+            <div class="mb-3">
+                <label for="inputContaElevada" class="form-label">Se a conta for elevada, o que fará?</label>
+                <input type="text" class="form-control" id="inputContaElevada">
+            </div>
+            <div class="mb-3">
+                <p>Que tipo de alimentação pretende dar ao animal?</p>
+                <input type="checkbox" id="racaoSeca" name="animal-racao" value="Ração Seca">
+                <label for="racaoSeca" class="form-check-label">Ração Seca</label><br>
+                <input type="checkbox" id="racaoHumida" name="animal-racao" value="Ração húmida">
+                <label for="racaoHumida" class="form-check-label">Ração húmida</label><br>
+                <input type="checkbox" id="comidaCaseira" name="animal-racao" value="Comida Caseira">
+                <label for="comidaCaseira" class="form-check-label">Comida Caseira</label><br>
+                <input type="checkbox" id="restosRefeicoes" name="animal-racao" value="Restos de refeições">
+                <label for="restosRefeicoes" class="form-check-label">Restos de refeições</label><br>
+            </div>
+            <div class="mb-3">
+                <p>O que está nos seus planos para os próximos 10/15 anos?</p>
+                <input type="checkbox" id="terFilhos" name="planos-vida" value="Ter filhos">
+                <label for="terFilhos" class="form-check-label">Ter filhos</label><br>
+                <input type="checkbox" id="viajar" name="planos-vida" value="Viajar">
+                <label for="viajar" class="form-check-label">Viajar</label><br>
+                <input type="checkbox" id="casar" name="planos-vida" value="Casar">
+                <label for="casar" class="form-check-label">Casar</label><br>
+                <input type="checkbox" id="mudarCida" name="planos-vida" value="Mudar de país/cidade/etcs">
+                <label for="mudarCida" class="form-check-label">Mudar de país/cidade/etc</label><br>
+                <input type="checkbox" id="mudarCasa" name="planos-vida" value="Mudar de casa">
+                <label for="mudarCasa" class="form-check-label">Mudar de casa</label><br>
+            </div>
+            <div class="mb-3">
+                <label for="inputElementoF" class="form-label">Algum dos elementos do seu agregado familiar, ou
+                    amigos/parentes próximos, tem alergia a cães ou gatos?</label>
+                <input type="text" class="form-control" id="inputElementoF">
+            </div>
+            <div class="mb-3">
+                <label for="inputGravidez" class="form-label">Em caso de gravidez, fará o teste da toxoplasmose?</label>
+                <input type="text" class="form-control" id="inputGravidez">
+            </div>
+            <div class="mb-3">
+                <label for="inputPositivoToxo" class="form-label">Se for positivo, o que fará?</label>
+                <input type="text" class="form-control" id="inputPositivoToxo">
+            </div>
+            <div class="mb-3">
+                <p>Gostaria de continuar a ter o nosso apoio/conselhos, depois de adoptar o animal?</p>
+                <input type="radio" id="apoioSim" name="apoio1" value="Sim">
+                <label for="apoioSim" class="form-check-label">Sim</label><br>
+                <input type="radio" id="apoioNao" name="apoio1" value="Não">
+                <label for="apoioNao" class="form-check-label">Não</label><br>
             </div>
             <div class="form-group">
                 <label for="inputMsg">Informação que queira partilhar connosco</label>
                 <textarea class="form-control" id="inputMsg" rows="4"></textarea>
             </div>
+            <div class="mb-3">
+                <p><label>Anexar documentos:</label><br />
+                    <span class="wpcf7-form-control-wrap" data-name="ficheiros">
+                        <input size="40" class="wpcf7-form-control wpcf7-file" accept=".gif,.png,.jpg,.jpeg,.pdf"
+                            aria-invalid="false" type="file" name="ficheiros" />
+                    </span>
+                </p>
+            </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Li e concordo com a Política de Privacidade.</label>
+                <p class="mb-0">Vamos manter os seus dados em segurança, enquanto assim o pretender, pode eliminar ou
+                    editar. Consulte a nossa <a href="causasdecaudas.orgpolitica-privacidade/">Política de
+                        Privacidade</a>.</p>
+                <input type="checkbox" class="form-check-input mt-1" id="politicaPrivacidade"
+                    name="politica-privacidade[]" value="Li e concordo com a Política de Privacidade."
+                    aria-required="true" />
+                <label class="form-check-label" for="politicaPrivacidade">Li e concordo com a Política de
+                    Privacidade.</label>
             </div>
             <button type="submit" class="my-2 btn btn-primary">Enviar</button>
         </form>
@@ -252,4 +347,5 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
