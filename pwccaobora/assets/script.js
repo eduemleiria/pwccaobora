@@ -6,25 +6,30 @@ $(document).ready(function(){
         var inputSearch = $("#inputSearch").val();
         $(".search-title").text("Listar cães da raça: "+inputSearch);
     
-        //Limpar o HTML dentro do lista filmes
+        //Limpar o HTML dentro do lista cães
         $(".listar-caes").empty();
         $.ajax({
             url: "https://api.petfinder.com/v2/animals?type=dog&breed="+inputSearch,
             method: "GET",
             beforeSend: function (autho){
-                autho.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJrUkJsSzFkQkJldlpQSFdobk1wMXFlUVFhV0VFWllFaEVrYW9sTG1wRU1WUzZadUsyWSIsImp0aSI6ImE2ZjA3YzU5YzBlMmUxMDllYmJjMTBjOTVmZDIwYTBlZjJmNjI2NDMzMjA3ZTc0M2I0ZGYxMmYwZDhjNzkzODdlYzAxNWJlM2MwZjQ0YzA2IiwiaWF0IjoxNzA1ODAwNjYxLCJuYmYiOjE3MDU4MDA2NjEsImV4cCI6MTcwNTgwNDI2MSwic3ViIjoiIiwic2NvcGVzIjpbXX0.T46ZPrLB4AZkcmdk7uv3pIV-mC5mw8szzkFbHnV6W1bVl0V-r3J3NkLboN1MizQOZ5ubiBppWPdQ973Rs3ZBGDPe2JqLw_Lsr6wwuD5qFHHFU44Rb2PzFUpiKqtFgRCBFOcxAqJbS7YIdjHfK2H1PyLoGz7E2UTtWRrmVRJMI5DaeDo6Mdbstpw_I_8WllkiUFbhYSWZCz_S5B85-N1Cbt6G7nIcdCkmxETR8RjDYurVhlbrwDHeRf8tb4-p-GQin-SVarni2jTEaKy-7mxY5KWN3GW2S7xjAx9utM7sXEh1t4VURGm0lROrzlgb-0iHQZF98BPyGrGjXbmaeyLhrA');
+                autho.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJrUkJsSzFkQkJldlpQSFdobk1wMXFlUVFhV0VFWllFaEVrYW9sTG1wRU1WUzZadUsyWSIsImp0aSI6ImEwMjIzOTdkMDIzY2U2MDM0M2FmN2Y4MTk3NTYwNTRkYWJhMTA0ZTM0YmFhYzU2MWIyYzJmMmQ3NzdiZDYwZTA0MzdhOWE5ODQxYmQ2YmZiIiwiaWF0IjoxNzA1ODY2MjcwLCJuYmYiOjE3MDU4NjYyNzAsImV4cCI6MTcwNTg2OTg3MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.rQ1ZA1Fzh4_j0rxZHUKabaNQqY8HwW1PP92xrD-iAbgNYwidCseo793g3S9Ge_SRwRVIGj8nYd5_dWWfAeOSnRQ_BHXZ4IoGKhmDAd0Rw3p10VbbO8NtZ8TwokpFWFEgatNQ5CkCJradqNhCJYz21FyUDbyTXjmChkvOAMxjt6s1Y-2VrhIchWR1y5xpPBPk9uiMdehqtfhLPjxDWWzX8A7ezYnXwfeeENzjWwuCyYid7NGLVAUJCjiAFxzVt0zNY2icv4YOMbTE757OJz_w9Ima5ipkU186NkcdTbXXO7L3DRP6Ws0lk-r1d6rDqYYbNDfSUNXOR_CeZwT-vVPf3w');
             }
         }).done(function (data) {
             console.log(data.animals);
             $.each(data.animals, function(index, dog){
-                var card = cloneCard.clone();
-    
+                
                 //Preencher o card
-                $(".img-dog", card).attr("src", dog.primary_photo_cropped.small);
-                $(".dog-name", card).text(dog.name);
-                $(".dog-age", card).text(dog.age);
-                $(".dog-size", card).text(dog.size);
-                var favButton = $(".add-fav", card);
+                if (dog.primary_photo_cropped == null || dog.primary_photo_cropped == undefined || dog.primary_photo_cropped.length == 0){
+                        
+                }else{
+                    var card = cloneCard.clone();
+                    $(".img-dog", card).attr("src", dog.primary_photo_cropped.small);
+                    $(".dog-name", card).text(dog.name);
+                    $(".dog-age", card).text(dog.age);
+                    $(".dog-size", card).text(dog.size);
+                    $(".details", card).attr('href', 'detalhes.html?id='+dog.id);
+                    var favButton = $(".add-fav", card);   
+                }
 
                 //Chama a função para mudar o visual
                 //updateFavButtonVisual(favButton, movie);
@@ -36,7 +41,7 @@ $(document).ready(function(){
             });
         });
     });
-
+    
     /*function updateFavButtonVisual(favButton, movie){
         //Verifica se isto está na Local Storage
         var mFavorite = isFavorite(movie.imdbID);
@@ -88,4 +93,35 @@ $(document).ready(function(){
         favorites.push(movie);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }*/
+
+    $(document).ready(function() {
+        $('#sucesso').on('click', function() {
+            alert("Obrigado por efetuar a compra!"); 
+        });
+    });
 });
+
+var id;
+
+function getDetails(){
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        id = urlParams.get('id');
+        console.log(id);
+        $.ajax({
+            url: "https://api.petfinder.com/v2/animals/"+id,
+            method: "GET",
+            beforeSend: function (autho){
+                autho.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJrUkJsSzFkQkJldlpQSFdobk1wMXFlUVFhV0VFWllFaEVrYW9sTG1wRU1WUzZadUsyWSIsImp0aSI6ImEwMjIzOTdkMDIzY2U2MDM0M2FmN2Y4MTk3NTYwNTRkYWJhMTA0ZTM0YmFhYzU2MWIyYzJmMmQ3NzdiZDYwZTA0MzdhOWE5ODQxYmQ2YmZiIiwiaWF0IjoxNzA1ODY2MjcwLCJuYmYiOjE3MDU4NjYyNzAsImV4cCI6MTcwNTg2OTg3MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.rQ1ZA1Fzh4_j0rxZHUKabaNQqY8HwW1PP92xrD-iAbgNYwidCseo793g3S9Ge_SRwRVIGj8nYd5_dWWfAeOSnRQ_BHXZ4IoGKhmDAd0Rw3p10VbbO8NtZ8TwokpFWFEgatNQ5CkCJradqNhCJYz21FyUDbyTXjmChkvOAMxjt6s1Y-2VrhIchWR1y5xpPBPk9uiMdehqtfhLPjxDWWzX8A7ezYnXwfeeENzjWwuCyYid7NGLVAUJCjiAFxzVt0zNY2icv4YOMbTE757OJz_w9Ima5ipkU186NkcdTbXXO7L3DRP6Ws0lk-r1d6rDqYYbNDfSUNXOR_CeZwT-vVPf3w');
+            }
+        }).done(function (data){
+            console.log(data);
+            $(".dog-name").text(data.animal.name);
+            $(".dog-age").text(data.animal.age);
+            $(".dog-gender").text(data.animal.gender);
+            $(".dog-breed").text(data.animal.breed);
+            $(".dog-desc").text(data.animal.description);
+            $(".img-dog").attr("src", data.animal.primary_photo_cropped.medium);
+            $(".dog-tag").text(data.animal.tags);
+        });
+}
