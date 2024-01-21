@@ -16,44 +16,83 @@ $(document).ready(function(){
             }
         }).done(function (data) {
             console.log(data.animals);
-            $.each(data.animals, function (index, dog) {
-                if (dog.primary_photo_cropped == null || dog.primary_photo_cropped == undefined || dog.primary_photo_cropped.length == 0) {
-                    return; // Continue para o próximo item se a foto não estiver disponível
+            $.each(data.animals, function(index, dog){
+                
+                //Preencher o card
+                if (dog.primary_photo_cropped == null || dog.primary_photo_cropped == undefined || dog.primary_photo_cropped.length == 0){
+                        
+                }else{
+                    var card = cloneCard.clone();
+                    $(".img-dog", card).attr("src", dog.primary_photo_cropped.small);
+                    $(".dog-name", card).text(dog.name);
+                    $(".dog-age", card).text(dog.age);
+                    $(".dog-size", card).text(dog.size);
+                    $(".details", card).attr('href', 'detalhes.html?id='+dog.id);
+                    var favButton = $(".add-fav", card);   
                 }
 
-                var card = cloneCard.clone();
-                $(".img-dog", card).attr("src", dog.primary_photo_cropped.small)
-                $(".dog-name", card).text(dog.name);
-                $(".dog-age", card).text(dog.age);
-                $(".dog-size", card).text(dog.size);
-                $(".details", card).attr('href', 'detalhes.html?id=' + dog.id);
-
-                // Adiciona aos favoritos
-                var favButton = $(".add-fav", card);
-                adicionarAosFavoritos(favButton, dog);
+                //Chama a função para mudar o visual
+                //updateFavButtonVisual(favButton, movie);
+                //Chama função para atualizar o estado do botão
+                //updateFavorite(favButton, movie);
 
                 //Colocar cada card a seguir uns aos outros com a função append
                 $(".listar-caes").append(card);
             });
         });
     });
-
-});
-
-// Função para adicionar aos favoritos
-function adicionarAosFavoritos(botao, cao) {
-    botao.on("click", function () {
-        var ehCaoFavorito = ehFavorito(cao.id);
-
-        if (ehCaoFavorito) {
-            alert("Cão removido dos favoritos");
-            removerFavorito(cao);
-        } else {
-            alert("Cão adicionado aos favoritos");
-            salvarFavoritos(cao);
+    
+    /*function updateFavButtonVisual(favButton, movie){
+        //Verifica se isto está na Local Storage
+        var mFavorite = isFavorite(movie.imdbID);
+        if(mFavorite === true){
+            favButton.text("Remover Favoritos");
+            favButton.removeClass("btn-primary");
+            favButton.addClass("btn-danger");
         }
-    });
-}
+    }
+
+    function isFavorite(imdbID){
+        /*vai a local storage à procura de uma variavel chamada 
+        "favorites" e vê se tem algum valor
+
+        var favorites = JSON.parse(localStorage.getItem("favorites")) || []; 
+
+        //Vai pesquisar no objeto filter se ele existe algum filme com este id
+        favorites = favorites.some(function(movie){
+            /* Estou a verificar se o imdbID que estou a passar na função existe 
+            no localStorage com o mesmo ID se existir o return devolve true se não existir o return devolve false
+            return movie.imdbID !== imdbID;
+        });
+    }
+
+    function updateFavorite(button, movie){
+        //Verificar se já foi ou não adicionado aos favoritos
+        if(!button.hasClass("adicionado")){
+            //Verificar se o evento click já foi adicionado
+            button.addClass("adicionado");
+
+            //Adicionar a ação click
+            button.on("click", function(){
+                //Alternar o estado se é remover ou adicionar 
+                var Favoritos = isFavorite(movie.imdbID);
+                if(Favoritos === true){
+                    //Aqui fica a função para remover
+                    alert("removido");
+                }else{
+                    //Aqui fica a função para adicionar
+                    alert("adicionado");
+                    saveFavoritos(movie);
+                }
+            })
+        }
+    }
+    
+    function saveFavoritos(movie){
+        var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        favorites.push(movie);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }*/
 
     $(document).ready(function() {
         $('#sucesso').on('click', function() {
