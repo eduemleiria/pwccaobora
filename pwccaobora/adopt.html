@@ -72,7 +72,7 @@
             <h1 class="search-title"></h1>
             <div class="input-group my-3">
                 <input type="text" class="form-control rounded" id="inputSearch" placeholder="insira a raça do cão aqui" aria-label=""/>
-                <button type="button" class="btn btn-outline-primary" id="btn-search" data-mdb-ripple-init>search</button>
+                <button type="button" class="btn btn-outline-primary" id="btn-search" data-mdb-ripple-init>Pesquisar</button>
               </div>
             <div class="listar-caes row">
                 <div class="card-caes col-md-4 my-3 py-2">
@@ -84,7 +84,9 @@
                             <p class="card-text dog-size">Tamanho</p>
                             <a href="" class="btn btn-primary details">Detalhes</a>
                             <!-- Botão favoritar -->
-                            <button class="btn btn-warning add-fav fav-added">Favoritar</button>
+                            <button id="favButton" class="btn btn-warning" onclick="toggleFavorite()">
+                                <i class="fas fa-star"></i> Favoritar
+                            </button>
                         </div>
                     </div>
                 </div>

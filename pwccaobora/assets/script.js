@@ -119,7 +119,7 @@ function getDetails(){
             $(".dog-name").text(data.animal.name);
             $(".dog-age").text(data.animal.age);
             $(".dog-gender").text(data.animal.gender);
-            $(".dog-breed").text(data.animal.breed);
+            $(".dog-breed").text(data.animal.breeds.primary);
             $(".dog-desc").text(data.animal.description);
             $(".img-dog").attr("src", data.animal.primary_photo_cropped.medium);
             $(".dog-tag").text(data.animal.tags);
