@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
-        <title>O Amiguinho | Adotar</title>
+    <title>O Amiguinho | Adotar</title>
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
@@ -48,11 +48,9 @@
         <div class="container">
             <h1 class="search-title"></h1>
             <div class="input-group my-3">
-                <input type="text" class="form-control rounded" id="inputSearch" placeholder="insira a raça do cão aqui"
-                    aria-label="" />
-                <button type="button" class="btn btn-outline-primary" id="btn-search"
-                    data-mdb-ripple-init>search</button>
-            </div>
+                <input type="text" class="form-control rounded" id="inputSearch" placeholder="insira a raça do cão aqui" aria-label=""/>
+                <button type="button" class="btn btn-outline-primary" id="btn-search" data-mdb-ripple-init>search</button>
+              </div>
             <div class="listar-caes row">
                 <div class="card-caes col-md-4 my-3 py-2">
                     <div class="card">
@@ -61,7 +59,7 @@
                             <h5 class="card-title dog-name">Nome do cão</h5>
                             <p class="card-text dog-age">Idade</p>
                             <p class="card-text dog-size">Tamanho</p>
-                            <a href="detalhes.html" class="btn btn-primary">Detalhes</a>
+                            <a href="" class="btn btn-primary details">Detalhes</a>
 
                             <!-- Botão favoritar -->
                             <button class="btn btn-outline-warning star-button" onclick="adicionarAosFavoritos(this, { id: 1, name: 'Nome do cão', age: 'Idade', size: 'Tamanho' })">Favoritar</button>
@@ -69,9 +67,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Adicione mais cards conforme necessário -->
-
             </div>
         </div>
     </section>
@@ -84,12 +79,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
     <script src="assets/favoritos.js"></script>
-
 </body>
 
 </html>
