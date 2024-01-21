@@ -1,91 +1,78 @@
-$(document).ready(function(){
+$(document).ready(function () {
     var cloneCard = $(".card-caes").clone();
-    var petFinderUrl = "Url"
+    var petFinderUrl = "Url";
+
     $("#btn-search").on("click", function () {
-        //Vai buscar o valor do input
         var inputSearch = $("#inputSearch").val();
-        $(".search-title").text("Listar cães da raça: "+inputSearch);
-    
-        //Limpar o HTML dentro do lista filmes
+        $(".search-title").text("Listar cães da raça: " + inputSearch);
         $(".listar-caes").empty();
+
         $.ajax({
-            url: "https://api.petfinder.com/v2/animals?type=dog&breed="+inputSearch,
+            url: "https://api.petfinder.com/v2/animals?type=dog&breed=" + inputSearch,
             method: "GET",
-            beforeSend: function (autho){
-                autho.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJrUkJsSzFkQkJldlpQSFdobk1wMXFlUVFhV0VFWllFaEVrYW9sTG1wRU1WUzZadUsyWSIsImp0aSI6ImE2ZjA3YzU5YzBlMmUxMDllYmJjMTBjOTVmZDIwYTBlZjJmNjI2NDMzMjA3ZTc0M2I0ZGYxMmYwZDhjNzkzODdlYzAxNWJlM2MwZjQ0YzA2IiwiaWF0IjoxNzA1ODAwNjYxLCJuYmYiOjE3MDU4MDA2NjEsImV4cCI6MTcwNTgwNDI2MSwic3ViIjoiIiwic2NvcGVzIjpbXX0.T46ZPrLB4AZkcmdk7uv3pIV-mC5mw8szzkFbHnV6W1bVl0V-r3J3NkLboN1MizQOZ5ubiBppWPdQ973Rs3ZBGDPe2JqLw_Lsr6wwuD5qFHHFU44Rb2PzFUpiKqtFgRCBFOcxAqJbS7YIdjHfK2H1PyLoGz7E2UTtWRrmVRJMI5DaeDo6Mdbstpw_I_8WllkiUFbhYSWZCz_S5B85-N1Cbt6G7nIcdCkmxETR8RjDYurVhlbrwDHeRf8tb4-p-GQin-SVarni2jTEaKy-7mxY5KWN3GW2S7xjAx9utM7sXEh1t4VURGm0lROrzlgb-0iHQZF98BPyGrGjXbmaeyLhrA');
+            beforeSend: function (autho) {
+                autho.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJrUkJsSzFkQkJldlpQSFdobk1wMXFlUVFhV0VFWllFaEVrYW9sTG1wRU1WUzZadUsyWSIsImp0aSI6IjY0ZTkwY2IwYjZlNDViMWU5YzhiMWEyZjNjNTQ1MmU1Y2JmZWNhODY4NjRkNWY0NzkwMWE0ZWUxZDMzMmY1Njk0N2IyYTAxYjNhZGFkY2M3IiwiaWF0IjoxNzA1ODYyNzY4LCJuYmYiOjE3MDU4NjI3NjgsImV4cCI6MTcwNTg2NjM2OCwic3ViIjoiIiwic2NvcGVzIjpbXX0.CaJf1RrYGs6bL-zURYAtXwczSeJAtC9Pzu00KMiEfZLMU9KI09U7_zjR_D_UjBunU5oMnjK7nuWzoqgYly_eo-0Rugc1KMYYcMHforXRgdj7Ve9q0csK62OHHD_5Re24C1Szb2bTSh8wDPA2TFTIzQfIixsNq2OTl-MhrQNBs2kO-nzJRDwDzzkuEKum4DUV9-xOvgBsdIY2R5Pe9NbBb30G4Ngfa-BJ1ZEeo8kd9BhfrT6nwOu-Wd73N-dlnJ7gKgijWZqKMHSVe40_XPP3T7CVHTER-cwHC2e9wWIPXNO7QNHopRMQUQRxGVeJGtvcslMYYT3la6gxc1utys5ymQ');
             }
         }).done(function (data) {
             console.log(data.animals);
-            $.each(data.animals, function(index, dog){
+            $.each(data.animals, function (index, dog) {
+                if (dog.primary_photo_cropped == null || dog.primary_photo_cropped == undefined || dog.primary_photo_cropped.length == 0) {
+                    return; // Continue para o próximo item se a foto não estiver disponível
+                }
+
                 var card = cloneCard.clone();
-    
-                //Preencher o card
-                $(".img-dog", card).attr("src", dog.primary_photo_cropped.small);
+                $(".img-dog", card).attr("src", dog.primary_photo_cropped.small)
                 $(".dog-name", card).text(dog.name);
                 $(".dog-age", card).text(dog.age);
                 $(".dog-size", card).text(dog.size);
+                $(".details", card).attr('href', 'detalhes.html?id=' + dog.id);
+
+                // Adiciona aos favoritos
                 var favButton = $(".add-fav", card);
+                adicionarAosFavoritos(favButton, dog);
 
-                //Chama a função para mudar o visual
-                //updateFavButtonVisual(favButton, movie);
-                //Chama função para atualizar o estado do botão
-                //updateFavorite(favButton, movie);
-
-                //Colocar cada card a seguir uns aos outros com a função append
                 $(".listar-caes").append(card);
             });
         });
     });
 
-    /*function updateFavButtonVisual(favButton, movie){
-        //Verifica se isto está na Local Storage
-        var mFavorite = isFavorite(movie.imdbID);
-        if(mFavorite === true){
-            favButton.text("Remover Favoritos");
-            favButton.removeClass("btn-primary");
-            favButton.addClass("btn-danger");
-        }
-    }
-
-    function isFavorite(imdbID){
-        /*vai a local storage à procura de uma variavel chamada 
-        "favorites" e vê se tem algum valor
-
-        var favorites = JSON.parse(localStorage.getItem("favorites")) || []; 
-
-        //Vai pesquisar no objeto filter se ele existe algum filme com este id
-        favorites = favorites.some(function(movie){
-            /* Estou a verificar se o imdbID que estou a passar na função existe 
-            no localStorage com o mesmo ID se existir o return devolve true se não existir o return devolve false
-            return movie.imdbID !== imdbID;
-        });
-    }
-
-    function updateFavorite(button, movie){
-        //Verificar se já foi ou não adicionado aos favoritos
-        if(!button.hasClass("adicionado")){
-            //Verificar se o evento click já foi adicionado
-            button.addClass("adicionado");
-
-            //Adicionar a ação click
-            button.on("click", function(){
-                //Alternar o estado se é remover ou adicionar 
-                var Favoritos = isFavorite(movie.imdbID);
-                if(Favoritos === true){
-                    //Aqui fica a função para remover
-                    alert("removido");
-                }else{
-                    //Aqui fica a função para adicionar
-                    alert("adicionado");
-                    saveFavoritos(movie);
-                }
-            })
-        }
-    }
-    
-    function saveFavoritos(movie){
-        var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-        favorites.push(movie);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
-    }*/
 });
+
+// Função para adicionar aos favoritos
+function adicionarAosFavoritos(botao, cao) {
+    botao.on("click", function () {
+        var ehCaoFavorito = ehFavorito(cao.id);
+
+        if (ehCaoFavorito) {
+            alert("Cão removido dos favoritos");
+            removerFavorito(cao);
+        } else {
+            alert("Cão adicionado aos favoritos");
+            salvarFavoritos(cao);
+        }
+    });
+}
+
+// Função para verificar se um cão com o ID fornecido está nos favoritos
+function ehFavorito(idCao) {
+    var favoritos = JSON.parse(localStorage.getItem("caesFavoritos")) || [];
+    return favoritos.some(function (cao) {
+        return cao.id === idCao;
+    });
+}
+
+// Função para salvar um cão nos favoritos na Local Storage
+function salvarFavoritos(cao) {
+    var favoritos = JSON.parse(localStorage.getItem("caesFavoritos")) || [];
+    favoritos.push(cao);
+    localStorage.setItem("caesFavoritos", JSON.stringify(favoritos));
+}
+
+// Função para remover um cão dos favoritos na Local Storage
+function removerFavorito(cao) {
+    var favoritos = JSON.parse(localStorage.getItem("caesFavoritos")) || [];
+    favoritos = favoritos.filter(function (caoFavorito) {
+        return caoFavorito.id !== cao.id;
+    });
+    localStorage.setItem("caesFavoritos", JSON.stringify(favoritos));
+}
