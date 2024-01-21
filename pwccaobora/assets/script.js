@@ -12,7 +12,7 @@ $(document).ready(function(){
             url: "https://api.petfinder.com/v2/animals?type=dog&breed="+inputSearch,
             method: "GET",
             beforeSend: function (autho){
-                autho.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJrUkJsSzFkQkJldlpQSFdobk1wMXFlUVFhV0VFWllFaEVrYW9sTG1wRU1WUzZadUsyWSIsImp0aSI6ImEwMjIzOTdkMDIzY2U2MDM0M2FmN2Y4MTk3NTYwNTRkYWJhMTA0ZTM0YmFhYzU2MWIyYzJmMmQ3NzdiZDYwZTA0MzdhOWE5ODQxYmQ2YmZiIiwiaWF0IjoxNzA1ODY2MjcwLCJuYmYiOjE3MDU4NjYyNzAsImV4cCI6MTcwNTg2OTg3MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.rQ1ZA1Fzh4_j0rxZHUKabaNQqY8HwW1PP92xrD-iAbgNYwidCseo793g3S9Ge_SRwRVIGj8nYd5_dWWfAeOSnRQ_BHXZ4IoGKhmDAd0Rw3p10VbbO8NtZ8TwokpFWFEgatNQ5CkCJradqNhCJYz21FyUDbyTXjmChkvOAMxjt6s1Y-2VrhIchWR1y5xpPBPk9uiMdehqtfhLPjxDWWzX8A7ezYnXwfeeENzjWwuCyYid7NGLVAUJCjiAFxzVt0zNY2icv4YOMbTE757OJz_w9Ima5ipkU186NkcdTbXXO7L3DRP6Ws0lk-r1d6rDqYYbNDfSUNXOR_CeZwT-vVPf3w');
+                autho.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJrUkJsSzFkQkJldlpQSFdobk1wMXFlUVFhV0VFWllFaEVrYW9sTG1wRU1WUzZadUsyWSIsImp0aSI6IjhlYzk5OWFjODFkZWJhNDEyYTVlMDljZjZlM2JmNmNkODFlOGZiODBlNTY4MDJkM2NiMDc2ZjE2NjIwMzJjNzA1ZTVlNmUxMDIzM2VmZTI5IiwiaWF0IjoxNzA1ODcwMDcwLCJuYmYiOjE3MDU4NzAwNzAsImV4cCI6MTcwNTg3MzY3MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.KSpvn8dEvnxD5uRGvfln7HiH6CA-KO68v1I-v3h38kqIUTeb5d_yc4t5QUZJQfyNWoNgLpJgsfxkBsczx-SoICUW9XtquFqymw89ZXzAppydf35lfNj5wDEkD-W1PYytxCGIzbbGS6G3oovnR5fAWjCByeg94qoPdmNz3ftLJ-qCL6Ah4EmYX7t5Kk30ghCfyoU4qT_vjmLHi-DTyAt2isa610DiSnsAuJmPFefiChjmRuKuAepBD6iHtjRNt1-Ojn_Sm51jY7cdJU77k2R9e7QFwVPZlbReMckQnk3AUVw3O72D0Y164qDATXjs-lsrpUjTL_TaKHmUxtDNG1oj7g');
             }
         }).done(function (data) {
             console.log(data.animals);
@@ -42,9 +42,9 @@ $(document).ready(function(){
         });
     });
     
-    /*function updateFavButtonVisual(favButton, movie){
+    function updateFavButtonVisual(favButton, dog){
         //Verifica se isto está na Local Storage
-        var mFavorite = isFavorite(movie.imdbID);
+        var mFavorite = isFavorite(dog.id);
         if(mFavorite === true){
             favButton.text("Remover Favoritos");
             favButton.removeClass("btn-primary");
@@ -52,21 +52,21 @@ $(document).ready(function(){
         }
     }
 
-    function isFavorite(imdbID){
+    function isFavorite(id){
         /*vai a local storage à procura de uma variavel chamada 
-        "favorites" e vê se tem algum valor
+        "favorites" e vê se tem algum valor*/
 
         var favorites = JSON.parse(localStorage.getItem("favorites")) || []; 
 
         //Vai pesquisar no objeto filter se ele existe algum filme com este id
-        favorites = favorites.some(function(movie){
+        favorites = favorites.some(function(dog){
             /* Estou a verificar se o imdbID que estou a passar na função existe 
-            no localStorage com o mesmo ID se existir o return devolve true se não existir o return devolve false
-            return movie.imdbID !== imdbID;
+            no localStorage com o mesmo ID se existir o return devolve true se não existir o return devolve false*/
+            return dog.id !== id;
         });
     }
 
-    function updateFavorite(button, movie){
+    function updateFavorite(button, id){
         //Verificar se já foi ou não adicionado aos favoritos
         if(!button.hasClass("adicionado")){
             //Verificar se o evento click já foi adicionado
@@ -75,24 +75,24 @@ $(document).ready(function(){
             //Adicionar a ação click
             button.on("click", function(){
                 //Alternar o estado se é remover ou adicionar 
-                var Favoritos = isFavorite(movie.imdbID);
+                var Favoritos = isFavorite(dog.id);
                 if(Favoritos === true){
                     //Aqui fica a função para remover
                     alert("removido");
                 }else{
                     //Aqui fica a função para adicionar
                     alert("adicionado");
-                    saveFavoritos(movie);
+                    saveFavoritos(dog);
                 }
             })
         }
     }
     
-    function saveFavoritos(movie){
+    function saveFavoritos(dog){
         var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-        favorites.push(movie);
+        favorites.push(dog);
         localStorage.setItem("favorites", JSON.stringify(favorites));
-    }*/
+    }
 
     $(document).ready(function() {
         $('#sucesso').on('click', function() {
@@ -112,7 +112,7 @@ function getDetails(){
             url: "https://api.petfinder.com/v2/animals/"+id,
             method: "GET",
             beforeSend: function (autho){
-                autho.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJrUkJsSzFkQkJldlpQSFdobk1wMXFlUVFhV0VFWllFaEVrYW9sTG1wRU1WUzZadUsyWSIsImp0aSI6ImEwMjIzOTdkMDIzY2U2MDM0M2FmN2Y4MTk3NTYwNTRkYWJhMTA0ZTM0YmFhYzU2MWIyYzJmMmQ3NzdiZDYwZTA0MzdhOWE5ODQxYmQ2YmZiIiwiaWF0IjoxNzA1ODY2MjcwLCJuYmYiOjE3MDU4NjYyNzAsImV4cCI6MTcwNTg2OTg3MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.rQ1ZA1Fzh4_j0rxZHUKabaNQqY8HwW1PP92xrD-iAbgNYwidCseo793g3S9Ge_SRwRVIGj8nYd5_dWWfAeOSnRQ_BHXZ4IoGKhmDAd0Rw3p10VbbO8NtZ8TwokpFWFEgatNQ5CkCJradqNhCJYz21FyUDbyTXjmChkvOAMxjt6s1Y-2VrhIchWR1y5xpPBPk9uiMdehqtfhLPjxDWWzX8A7ezYnXwfeeENzjWwuCyYid7NGLVAUJCjiAFxzVt0zNY2icv4YOMbTE757OJz_w9Ima5ipkU186NkcdTbXXO7L3DRP6Ws0lk-r1d6rDqYYbNDfSUNXOR_CeZwT-vVPf3w');
+                autho.setRequestHeader('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJrUkJsSzFkQkJldlpQSFdobk1wMXFlUVFhV0VFWllFaEVrYW9sTG1wRU1WUzZadUsyWSIsImp0aSI6IjhlYzk5OWFjODFkZWJhNDEyYTVlMDljZjZlM2JmNmNkODFlOGZiODBlNTY4MDJkM2NiMDc2ZjE2NjIwMzJjNzA1ZTVlNmUxMDIzM2VmZTI5IiwiaWF0IjoxNzA1ODcwMDcwLCJuYmYiOjE3MDU4NzAwNzAsImV4cCI6MTcwNTg3MzY3MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.KSpvn8dEvnxD5uRGvfln7HiH6CA-KO68v1I-v3h38kqIUTeb5d_yc4t5QUZJQfyNWoNgLpJgsfxkBsczx-SoICUW9XtquFqymw89ZXzAppydf35lfNj5wDEkD-W1PYytxCGIzbbGS6G3oovnR5fAWjCByeg94qoPdmNz3ftLJ-qCL6Ah4EmYX7t5Kk30ghCfyoU4qT_vjmLHi-DTyAt2isa610DiSnsAuJmPFefiChjmRuKuAepBD6iHtjRNt1-Ojn_Sm51jY7cdJU77k2R9e7QFwVPZlbReMckQnk3AUVw3O72D0Y164qDATXjs-lsrpUjTL_TaKHmUxtDNG1oj7g');
             }
         }).done(function (data){
             console.log(data);
